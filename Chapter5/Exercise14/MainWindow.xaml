@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <TextBox Name="numberToConvertTextbox" HorizontalAlignment="Left" Height="32" Margin="40,31,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="59" TextChanged="TextBox_TextChanged"/>
+        <TextBlock  Name="convertedNumberTextBlock" HorizontalAlignment="Left" Margin="151,31,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="32" Width="93"/>
+        <Button Name="convertButton" Content="Button" HorizontalAlignment="Left" Margin="82,109,0,0" VerticalAlignment="Top" Width="75" Click="convertButton_Click"/>
+
     </Grid>
 </Window>

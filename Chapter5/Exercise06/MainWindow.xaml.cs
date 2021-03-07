@@ -65,5 +65,30 @@ namespace Exercise06
             rectangle.Stroke = brushToUse;
             drawingArea.Children.Add(rectangle);
         }
+
+
+        private void DrawStreet(Canvas drawingArea,
+                               SolidColorBrush brushToUse,
+                               double topRoofX,
+                               double topRoofY,
+                               double width,
+                               double height)
+        {
+            
+            
+            for(int i  = 0; i < 4; i++)
+            {
+          
+                DrawHouse(paperCanvas, brushToUse, topRoofX, topRoofY, width, height);
+                topRoofX += 20 + width;
+            }
+            
+        }
+
+        private void drawButton_Click(object sender, RoutedEventArgs e)
+        {
+            SolidColorBrush brushToUse = new SolidColorBrush(Colors.Black);
+            DrawStreet(paperCanvas, brushToUse, 10, 10, 30, 30);
+        }
     }
 }
