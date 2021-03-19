@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-       
+        <TextBlock Text = "0"  Name="resultTextBlock" Background="AliceBlue" HorizontalAlignment="Left" Margin="94,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="46" Width="361"/>
+        <Button Name="sevenButton" Click="AddNumberClick" Content="7" HorizontalAlignment="Left" Margin="94,115,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Name="eightButton" Click="AddNumberClick" Content="8" HorizontalAlignment="Left" Margin="149,115,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Name="nineButton" Click="AddNumberClick" Content="9" HorizontalAlignment="Left" Margin="217,115,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Name="fourButton" Click="AddNumberClick" Content="4" HorizontalAlignment="Left" Margin="94,178,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Name="fiveButton" Click="AddNumberClick" Content="5" HorizontalAlignment="Left" Margin="149,178,0,0" VerticalAlignment="Top" Width="35" Height="31" RenderTransformOrigin="-0.396,2.699"/>
+        <Button Name="sixButton" Click="AddNumberClick" Content="6" HorizontalAlignment="Left" Margin="217,178,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Name="oneButton" Click="AddNumberClick" Content="1" HorizontalAlignment="Left" Margin="94,243,0,0" VerticalAlignment="Top" Width="35" Height="31" RenderTransformOrigin="0.533,3.625"/>
+        <Button Name="twoButton" Click="AddNumberClick" Content="2" HorizontalAlignment="Left" Margin="149,243,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Name="threeButton" Click="AddNumberClick" Content="3" HorizontalAlignment="Left" Margin="217,243,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button  Click="operatorClick" Content="+" HorizontalAlignment="Left" Margin="289,115,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Click="operatorClick" Content="-" HorizontalAlignment="Left" Margin="289,178,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Name="equalsToButton" Click="operatorClick" Content="=" HorizontalAlignment="Left" Margin="289,243,0,0" VerticalAlignment="Top" Width="35" Height="31"/>
+        <Button Name="zeroButton" Click="AddNumberClick" Content="0" HorizontalAlignment="Left" Margin="94,288,0,0" VerticalAlignment="Top" Width="35" Height="31" RenderTransformOrigin="0.533,3.625"/>
+
     </Grid>
 </Window>
