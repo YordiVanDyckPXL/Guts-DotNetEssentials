@@ -8,6 +8,11 @@
         Title="MainWindow" Height="350" Width="525"
         AutomationProperties.AutomationId="Window_13_1">
     <Grid>
-        
+        <ListBox Name="listBox" HorizontalAlignment="Left" Height="100" Margin="181,79,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="listBox_SelectionChanged">
+            <ListBoxItem Content="loser"/>
+            <ListBoxItem Content="loser2" Selected="ListBoxItem_Selected"/>
+        </ListBox>
+        <Label Name="selectedLabel" Content="Label" HorizontalAlignment="Left" Margin="165,219,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

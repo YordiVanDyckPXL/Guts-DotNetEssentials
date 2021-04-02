@@ -9,18 +9,28 @@
         Title="ExtraoefeningH10" Height="650" Width="950">
 
     <Grid>
-        
+
         <Label Content="Speed cm/s" HorizontalAlignment="Left" Height="24" Margin="37,68,0,0" VerticalAlignment="Top" Width="93"/>
         <Label Name="speedLabel" Content="0.5" HorizontalAlignment="Left" Height="24" Margin="462,64,0,0" VerticalAlignment="Top" Width="44"/>
         <Label Content="Size in pixels" HorizontalAlignment="Left" Margin="37,146,0,0" VerticalAlignment="Top"/>
-        
+
         <Label Content="10" HorizontalAlignment="Left" 
                Name="sizeLabel" Margin="470,138,0,0" VerticalAlignment="Top"/>
         <Canvas HorizontalAlignment="Left" Height="356" 
-                Name ="paperCanvas" Background ="LightGray" Margin="47,218,0,0" VerticalAlignment="Top" Width="536"/>
-        
+                Name ="paperCanvas" Background ="LightGray" Margin="47,218,0,0" VerticalAlignment="Top" Width="515"/>
+
 
         <Label Name="messageLabel" Content="" HorizontalAlignment="Left" Height="61" Margin="616,513,0,0" VerticalAlignment="Top" Width="218"/>
+        <Slider Minimum="0.5" Maximum="10" Name="speedSlider" HorizontalAlignment="Left" Margin="135,68,0,0" VerticalAlignment="Top" Height="24" Width="322"/>
+        <Slider TickFrequency="2" IsSnapToTickEnabled="True"
+                Minimum="10" Maximum="20" Name="sizeSlider" HorizontalAlignment="Left" Margin="135,148,0,0" VerticalAlignment="Top" Height="24" Width="322"/>
+        <Button Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="801,40,0,0" VerticalAlignment="Top" Width="75" Click="StartButton_Click"/>
+        <Button Name="resetButton" Content="Reset" HorizontalAlignment="Left" Margin="801,131,0,0" VerticalAlignment="Top" Width="75" Click="ResetButton_Click"/>
+        <Button Name="leftButton" Content="Left" HorizontalAlignment="Left" Margin="641,374,0,0" VerticalAlignment="Top" Width="75" Click="LeftButton_Click"/>
+        <Button Name="upButton" Content="Up" HorizontalAlignment="Left" Margin="759,290,0,0" VerticalAlignment="Top" Width="75" Click="UpButton_Click"/>
+        <Button Content="Right" HorizontalAlignment="Left" Margin="857,374,0,0" VerticalAlignment="Top" Width="75" Click="RightButton_Click"/>
+        <Button  Name="downButton" Content="Down" HorizontalAlignment="Left" Margin="759,498,0,0" VerticalAlignment="Top" Width="75" Click="DownButton_Click"/>
+        <Label Name="test" Content="Label" HorizontalAlignment="Left" Margin="602,138,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
