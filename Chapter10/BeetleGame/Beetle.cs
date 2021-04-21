@@ -99,7 +99,7 @@ namespace BeetleGame
 
         public double y {get => _y;}
 
-        public Ellipse GetEllipse { get => _ellipse; set => _ellipse = value; }
+        private Ellipse GetEllipse { get => _ellipse; set => _ellipse = value; }
 
         public static void destroyBeetle(Beetle beetle) 
         {
@@ -108,6 +108,7 @@ namespace BeetleGame
             beetle = null;
         }
 
-        public delegate void moveBeetle(int x, int y);
+       
+       
     }
 }

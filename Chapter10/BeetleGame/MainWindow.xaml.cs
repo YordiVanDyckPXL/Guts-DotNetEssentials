@@ -12,7 +12,7 @@ namespace BeetleGame
     public partial class MainWindow : Window
     {
         private Beetle _beetle;
-        private DispatcherTimer timer;
+        private DispatcherTimer _timer;
         private string _direction = "";
         private double  _changePositionValue;
         public MainWindow()
@@ -20,16 +20,14 @@ namespace BeetleGame
             InitializeComponent();
             sizeSlider.ValueChanged += SizeSlider_ValueChanged;
             speedSlider.ValueChanged += SpeedSlider_ValueChanged;
-            timer = new DispatcherTimer();
-            timer.Tick += Timer_Tick;
-            timer.Interval = TimeSpan.FromSeconds(1);
+            _timer = new DispatcherTimer();
+            _timer.Tick += Timer_Tick;
+           
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-                   
-               _beetle.ChangePosition(ref _changePositionValue, ref _direction);
-                     
+            _beetle.ChangePosition(ref _changePositionValue, ref _direction);
         }
 
         private void SpeedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -46,9 +44,12 @@ namespace BeetleGame
         {
             if (startButton.Content.Equals("Stop"))
             {
+               
                 _direction = "";
-                timer.Stop();
+                _timer.Stop();
                 startButton.Content = "Start";
+                sizeSlider.IsEnabled = true;
+                speedSlider.IsEnabled = true;
             }
             else 
             {
@@ -56,7 +57,10 @@ namespace BeetleGame
                 _beetle = new Beetle(Convert.ToDouble(speedSlider.Value), Convert.ToInt32(sizeSlider.Value), paperCanvas, paperCanvas.Width/2, paperCanvas.Height/2);
                 startButton.Content = "Stop";
                 _changePositionValue = Convert.ToDouble(speedSlider.Value);
-                timer.Start();
+                sizeSlider.IsEnabled = false;
+                speedSlider.IsEnabled = false;
+                _timer.Start();
+                _timer.Interval = TimeSpan.FromMilliseconds(Convert.ToDouble(speedSlider.Value));
             }
         }
 
@@ -81,7 +85,7 @@ namespace BeetleGame
             speedSlider.Value = speedSlider.Minimum;
 
             Beetle.destroyBeetle(_beetle);
-            timer.Stop();
+            _timer.Stop();
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
