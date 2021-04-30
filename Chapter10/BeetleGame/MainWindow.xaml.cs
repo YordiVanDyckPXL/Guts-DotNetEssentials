@@ -13,8 +13,8 @@ namespace BeetleGame
     {
         private Beetle _beetle;
         private DispatcherTimer _timer;
-        private string _direction = "";
-        private double  _changePositionValue;
+        private double _distance = 0;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +27,8 @@ namespace BeetleGame
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            _beetle.ChangePosition(ref _changePositionValue, ref _direction);
+            _distance += Convert.ToDouble(sizeSlider.Value) / 100;
+            _beetle.ChangePosition();
         }
 
         private void SpeedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -44,8 +45,8 @@ namespace BeetleGame
         {
             if (startButton.Content.Equals("Stop"))
             {
-               
-                _direction = "";
+
+                messageLabel.Content = $"total distance in meter: {Math.Round(_distance, 2)}" ;
                 _timer.Stop();
                 startButton.Content = "Start";
                 sizeSlider.IsEnabled = true;
@@ -53,44 +54,57 @@ namespace BeetleGame
             }
             else 
             {
+                if (_beetle == null)
+                {
+                    _beetle = new Beetle(paperCanvas, Convert.ToInt32(paperCanvas.Width / 2), Convert.ToInt32(paperCanvas.Height / 2), Convert.ToInt32(sizeSlider.Value));
+                }
+                else
+                {
+                    
+                    _beetle.IsVisible = true;
+                }   
                 
-                _beetle = new Beetle(Convert.ToDouble(speedSlider.Value), Convert.ToInt32(sizeSlider.Value), paperCanvas, paperCanvas.Width/2, paperCanvas.Height/2);
                 startButton.Content = "Stop";
-                _changePositionValue = Convert.ToDouble(speedSlider.Value);
+               
+                _beetle.Speed = Convert.ToDouble(speedSlider.Value);
                 sizeSlider.IsEnabled = false;
                 speedSlider.IsEnabled = false;
                 _timer.Start();
-                _timer.Interval = TimeSpan.FromMilliseconds(Convert.ToDouble(speedSlider.Value));
+                _timer.Interval = TimeSpan.FromMilliseconds(_beetle.Speed);
             }
         }
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            _direction = "Up";
+            
+           _beetle.Up = true;
         }
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
         {
-            _direction = "Left";
+            _beetle.Right = false;
         }
 
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            _direction = "Down";
+            _beetle.Up = false;
         }
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
+            _distance = 0;
             sizeSlider.Value = sizeSlider.Minimum;
             speedSlider.Value = speedSlider.Minimum;
-
-            Beetle.destroyBeetle(_beetle);
+            _beetle.IsVisible = false;
+            startButton.Content = "Start";
+            
+            //Beetle.destroyBeetle(_beetle);
             _timer.Stop();
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
         {
-            _direction = "Right";
+            _beetle.Right = true;
         }
     }
 };

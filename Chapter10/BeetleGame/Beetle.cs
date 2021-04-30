@@ -8,20 +8,28 @@ namespace BeetleGame
 {
     public class Beetle
     {
-        private double _speed;
-        private int _size;
+        private double _beetleSpeed;
+        private int _beetleSize;
         private Canvas _canvas;
-        private double _x;
-        private double _y;
+        private int _x;
+        private int _y;
         private Ellipse _ellipse;
+        private bool _up;
+        private bool _right ;
+        private bool _isVisible;
 
-        public Beetle(double speed, int size, Canvas canvas, double x, double y)
+        public Beetle(Canvas canvas, int x, int y, int size)
         {
-            _speed = speed;
-            _size = size;
+            
+            _beetleSize = size;
             _canvas = canvas;
-            _x = x;
-            _y = y;
+            X = x - _beetleSize/2;
+            Y = y - _beetleSize/2;
+            
+
+            Up = true;
+            Right = true;
+            IsVisible = true;
             createBeatle();
             
         }
@@ -30,83 +38,145 @@ namespace BeetleGame
         {
             _ellipse = new Ellipse();
             _ellipse.Margin = new Thickness(_x, _y, 0, 0);
-            _ellipse.Height = _size;
-            _ellipse.Width = _size;
+            _ellipse.Height = _beetleSize;
+            _ellipse.Width = _beetleSize;
             _ellipse.Fill = new SolidColorBrush(Colors.Red);
             _canvas.Children.Add(_ellipse);
         }
 
-        public double speed { get => _speed; set => _speed = value; }
+       
 
-        public void ChangePosition( ref double newValue, ref string direction)
+        public void ChangePosition()
         {
-            if (direction.Equals("Up"))
+            if (Speed > 0)
             {
-                if (_y > 0)
+
+            
+                if (Up)
                 {
-                    _y -= newValue;
-                    _ellipse.Margin = new Thickness(_x, _y, 0, 0);
-                }
-                else
-                {
-                    direction = "Down";
-                }
+                    if (Y > 0)
+                    {
+                        _y -= 1;
+                        _ellipse.Margin = new Thickness(_x, _y, 0, 0);
+                    }
+                    else
+                    {
+                        Up = false;
+                    }
                 
-            }
-            else if (direction.Equals("Down"))
-            {
-                if (y < _canvas.ActualHeight)
-                {
-                    _y += newValue;
-                    _ellipse.Margin = new Thickness(_x, _y, 0, 0);
                 }
-                else
+                else 
                 {
-                    direction = "Up";
-                }
+                    if (Y < _canvas.ActualHeight)
+                    {
+                        _y += 1;
+                        _ellipse.Margin = new Thickness(_x, _y, 0, 0);
+                    }
+                    else
+                    {
+                        Up = true;
+                    }
                 
-            }
-            else if (direction.Equals("Right"))
-            {
-                if (_x < _canvas.Width)
-                {
-                    _x += newValue;
-                    _ellipse.Margin = new Thickness(_x, _y, 0, 0);
                 }
-                else
+                if (Right)
                 {
-                    direction = "Left";
-                }
+                    if (X < _canvas.Width)
+                    {
+                    
+                        _x += 1;
+                        _ellipse.Margin = new Thickness(_x, _y, 0, 0);
+                    }
+                    else
+                    {
+                        Right = false;
+                    }
                 
-            }
-            else if (direction.Equals("Left"))
-            {
-                if (_x > 0)
-                {
-                    _x -= newValue;
-                    _ellipse.Margin = new Thickness(_x, _y, 0, 0);
                 }
-                else
+                else 
                 {
-                    direction = "Right";
-                }
+                    if (X > 0)
+                    {
+                        _x -= 1;
+                        _ellipse.Margin = new Thickness(_x, _y, 0, 0);
+                    }
+                    else
+                    {
+                        Right = true;
+                    }
                 
+                }
             }
 
         }
 
-        public double x {get => _x;}
+        public double Speed {
+            get => _beetleSpeed;
+            set
+            {
 
-        public double y {get => _y;}
+                _beetleSpeed = value;
+            }
+
+
+        }
+        public int Size
+        {
+            get => _beetleSize;
+            set
+            {
+
+                _beetleSize = value;
+            }
+        }
+        public bool Right
+        {
+            get => _right;
+            set
+            {
+                _right = value;
+            }
+        }
+        public bool IsVisible {
+            get => _isVisible;
+            set
+            {
+                _isVisible = value;
+                if (!_isVisible)
+                {
+                    _ellipse.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    _ellipse.Visibility = Visibility.Visible;
+                   
+                }
+            }
+        }
+        public bool Up { 
+            get=>_up; 
+            set {
+                _up = value;
+            }
+        }
+
+        public int X {
+            get => _x;
+            set => _x = value;
+        }
+
+        public int Y { 
+            get => _y; 
+            set=> _y = value; 
+        }
 
         private Ellipse GetEllipse { get => _ellipse; set => _ellipse = value; }
 
-        public static void destroyBeetle(Beetle beetle) 
-        {
-            beetle.GetEllipse.Fill = null;
-            beetle.GetEllipse = null;
-            beetle = null;
-        }
+       // public static void destroyBeetle(Beetle beetle) 
+       // {
+         //   beetle.GetEllipse.Fill = null;
+         //   beetle.GetEllipse = null;
+         //   beetle = null;
+       // }
 
        
        

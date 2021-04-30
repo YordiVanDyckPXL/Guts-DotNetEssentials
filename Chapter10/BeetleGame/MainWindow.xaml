@@ -20,7 +20,7 @@
                 Name ="paperCanvas" Background ="LightGray" Margin="47,218,0,0" VerticalAlignment="Top" Width="515"/>
 
 
-        <Label Name="messageLabel" Content="" HorizontalAlignment="Left" Height="61" Margin="616,513,0,0" VerticalAlignment="Top" Width="218"/>
+        <Label Name="messageLabel" Content="" HorizontalAlignment="Left" Height="60" Margin="589,536,0,0" VerticalAlignment="Top" Width="218"/>
         <Slider Minimum="0.5" Maximum="10" Name="speedSlider" HorizontalAlignment="Left" Margin="135,68,0,0" VerticalAlignment="Top" Height="24" Width="322"/>
         <Slider TickFrequency="2" IsSnapToTickEnabled="True"
                 Minimum="10" Maximum="20" Name="sizeSlider" HorizontalAlignment="Left" Margin="135,148,0,0" VerticalAlignment="Top" Height="24" Width="322"/>
